@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "./AppleCounter.css"; 
-import { sqrt } from 'mathjs'
+import 'math'
 
 <link rel = "stylesheet" href = "path/to/font-awesome/css/font-awesome.min.css" > < /link>
 
