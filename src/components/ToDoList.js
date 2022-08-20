@@ -1,8 +1,7 @@
 import React from 'react'
 import "./ToDoList.css";
 const ToDoList = () => {
-    return ( <
-        div > ToDoList < /div>
+    return ( <div > ToDoList < /div>
     )
 }
 
