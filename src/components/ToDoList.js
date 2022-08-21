@@ -6,11 +6,11 @@ const ToDoList = () => {
     const [todo, setTodo] = useState([])
     const showList = (e)=>{
         e.preventDefault();
-        const 
+        
         
     }
     return ( <> 
-        <form className='form'>
+        {/* <form className='form'>
         <div>
        <label htnlFor="task">Task:</label>
        <input 
@@ -31,7 +31,7 @@ const ToDoList = () => {
         
         )
        }
-       ) }
+       ) } */}
         </>
     )
 }
