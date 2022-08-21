@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import "./AppleCounter.css"; 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { AiFillApple } from "react-icons/ai";
+
+
 <link rel = "stylesheet" href = "https://use.fontawesome.com/releases/v5.6.1/css/all.css"></link>
 
 
@@ -57,7 +59,7 @@ const AppleCounter = () => {
         
     
     return ( <div>
-        <h3>Total Apples <FontAwesomeIcon icon="apple"/> </h3>
+        <h3>Total Apples <AiFillApple /> </h3>
         <h2 className = "count"> {counter} </h2>
         <p> Exactly in Tens: <span style={{ color }}>{result} </span> </p>
         <button className = "btn" onClick={changeText}>Add More Apples</button>
