@@ -10,20 +10,44 @@ const AppleCounter = () => {
     const [result, setResult] = useState('NO');
     const [color, setColor] = useState('Red')
 
-    useEffect(()=> {
-        let remainder = counter % 10
-        if(remainder !== 0){
+    // useEffect(()=> {
+    //     if(counter % 10 === 0){
+    //         setResult("YES")
+    //         setColor('Green')
+    //     } 
+    // },[counter])
+    const changeText = () =>{
+        let count = counter + Math.floor(Math.random(counter) * 5 + 1)
+        if(count%10 === 0){
+            setCounter(count)
             setResult("YES")
-            setColor('Green')
-        } 
-    },[counter])
+            setColor("Green")
+        }
+        else{
+            setCounter(count)
+            setResult("NO")
+            setColor("Red")
+        }
+    }
     const changeContent = () => {
-       let response = setCounter( counter - Math.floor(Math.random(counter) * 5 + 1)) 
+       let response = counter - Math.floor(Math.random(counter) * 5 + 1)
        if (response < 0){
-        setCounter(response)
+        setCounter(0)
        }
        else {
-        setCounter(0)
+        
+        if(response % 10 === 0){
+            setResult("YES")
+            setColor("Green")
+            setCounter(response)
+        }
+        else{
+            setCounter(response)
+            setResult("NO")
+            setColor("Red")
+        }
+
+        
        }
     }
     //     setCounter(counter - Math.floor(Math.random(counter) * 5 + 1))
@@ -36,7 +60,7 @@ const AppleCounter = () => {
         <h3>Total Apples <FontAwesomeIcon icon="apple"/> </h3>
         <h2 className = "count"> {counter} </h2>
         <p> Exactly in Tens: <span style={{ color }}>{result} </span> </p>
-        <button className = "btn" onClick={()=> setCounter( counter + Math.floor(Math.random(counter) * 5 + 1)) }>Add More Apples</button>
+        <button className = "btn" onClick={changeText}>Add More Apples</button>
         <button className = "btn" onClick={changeContent}>Eat Some Apples</button>
         
         </div >
