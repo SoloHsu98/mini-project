@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react'
+import React, { useState }  from 'react'
 import "./ToDoList.css";
 
 const ToDoList = () => {
@@ -6,11 +6,19 @@ const ToDoList = () => {
     const [todo, setTodo] = useState([])
     const showList = (e)=>{
         e.preventDefault();
-        
-        
+        if(text){
+            const id = new Date().getTime().toString()
+            const item = { 
+                id: id, 
+                task: text,
+            }
+            setTodo([...todo, item])
+            setText("");
+        }
+    
     }
     return ( <> 
-        {/* <form className='form'>
+        <form className='form'>
         <div>
        <label htnlFor="task">Task:</label>
        <input 
@@ -23,15 +31,16 @@ const ToDoList = () => {
        <button className ="btn" type="submit" onClick={showList} disabled>Add</button>
        </div>
        </form>
-       {list.map(( , index) =>{
+       {text.map((content , index) =>{
+        const { id, text } = content;
         return (
-            <ul className='item'>
-                <li>{text} <i class</li>
+            <ul className='items' key={id}>
+                <li>{text}</li>
             </ul>
         
         )
        }
-       ) } */}
+       ) }
         </>
     )
 }
