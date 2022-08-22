@@ -1,62 +1,80 @@
-import React, { useState }  from 'react'
+import React, { useState } from "react";
 import "./ToDoList.css";
-import { BsX} from 'react-icons/bs'
+import { BsX } from "react-icons/bs";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const ToDoList = () => {
-    const [disable, setDisable] = useState(true);
-    const [text, setText] = useState("")
-    const [todo, setTodo] = useState([])
-  
-    const showList = (e)=>{
-        e.preventDefault();
-        console.log(text)
-        if(text){
-            const id = new Date().getTime().toString()
-            const item = { 
-                id: id, 
-                subject: text,
-            }
-            setTodo([...todo, item])
-            setText("");
-        } 
+  const [text, setText] = useState("");
+  const [todo, setTodo] = useState([]);
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      addToList();
     }
+  };
 
-    const handleChange = (e) => {
-        setDisable(false)
-        setText(e.target.value)
-    }
+  const handleDelete = (idToDelete) => {
+    setTodo(todo.filter((element) => element.id !== idToDelete));
+  };
 
-    return ( <> 
-        <form className='form'>
-        <div>
-       <label htnlFor="task"><b>Task:</b></label>&nbsp;
-       <input 
-       type="text"
-        id="task" 
-        name="text" 
-        value={text}
-        onChange={handleChange} />
+  const addToList = () => {
+    const id = new Date().getTime().toString();
+    const item = {
+      id: id,
+      subject: text,
+    };
+    setTodo([...todo, item]);
+    setText("");
+  };
 
-       <button className ="btn1" type="submit" onClick={showList} disabled={disable}>Add</button>
-       </div>
-       </form>
-       
-       {todo && todo.length ? "" : "Nothing to do :)"}
-        <div className="items">
-       {todo && todo.map((content , index) =>{
-        const { id, subject } = content;
-        return (
-            <div classNames ="list" key={id}>
-            <ul>
-                <li>{subject}<span className="btn-icon" onClick={()=>setTodo(todo.filter((element)=> element.id !== id))}><BsX/></span></li>
-            </ul>
-            </div>
-        )
-       }
-       )}
+  return (
+    <>
+      <div className="inputContainer">
+        <label htmlFor="taskInput" className="inputLabel">
+          Task:
+        </label>
+        <input
+          name="taskInput"
+          className="inputField"
+          value={text}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
+        <button
+          className="addButton"
+          disabled={text.trim() === ""}
+          onClick={addToList}
+        >
+          Add
+        </button>
       </div>
+      {todo.length > 0 ? (
+        <div className="listContainer">
+          <ul className="todoList">
+            {todo.map((item) => (
+              <li className="listItem" key={item.id}>
+                <div className="listItemContent">
+                  <span>{item.subject}</span>
+                  <FontAwesomeIcon
+                    icon={faTimes}
+                    size={"lg"}
+                    onClick={() => handleDelete(item.id)}
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <p>There is nothing to do. {":)"}</p>
+      )}
     </>
-    )
-}
+  );
+};
 
-export default ToDoList
+export default ToDoList;
