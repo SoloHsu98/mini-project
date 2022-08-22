@@ -5,6 +5,7 @@ import './App.css';
 function App() {
     return ( < div className = "App" >
         <AppleCounter / >
+        <br/><br/>
         <ToDoList / >
         </div>
     );

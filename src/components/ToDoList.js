@@ -1,7 +1,6 @@
 import React, { useState }  from 'react'
 import "./ToDoList.css";
-import { BsXLg } from 'react-icons/bs'
-
+import { BsX} from 'react-icons/bs'
 
 const ToDoList = () => {
     const [disable, setDisable] = useState(true);
@@ -21,27 +20,20 @@ const ToDoList = () => {
             setText("");
         } 
     }
+
     const handleChange = (e) => {
         setDisable(false)
         setText(e.target.value)
     }
 
-    // const removeItem = (id) => {
-    //     const feature = todo.filter((element)=> element.id !== id)
-    //     setTodo(feature)
-        // const feature = [...todo];
-        // feature.splice(index, 1);
-        // setTodo(feature);
-    
     return ( <> 
         <form className='form'>
         <div>
-       <label htnlFor="task"><h3>Task:</h3></label>
+       <label htnlFor="task"><b>Task:</b></label>&nbsp;
        <input 
        type="text"
         id="task" 
         name="text" 
-        placeholder="Search..."
         value={text}
         onChange={handleChange} />
 
@@ -49,20 +41,21 @@ const ToDoList = () => {
        </div>
        </form>
        
-       {todo && todo.length ? "" : "Nothing to do : /)"}
-       
-       
+       {todo && todo.length ? "" : "Nothing to do :)"}
+        <div className="items">
        {todo && todo.map((content , index) =>{
         const { id, subject } = content;
         return (
-            <div className='items' key={id}>
-                <li>{subject}<button className="btn-icon" onClick={()=>setTodo(todo.filter((element)=> element.id !== id))}><BsXLg /></button></li>
+            <div classNames ="list" key={id}>
+            <ul>
+                <li>{subject}<span className="btn-icon" onClick={()=>setTodo(todo.filter((element)=> element.id !== id))}><BsX/></span></li>
+            </ul>
             </div>
         )
        }
-       ) }
-
-        </>
+       )}
+      </div>
+    </>
     )
 }
 

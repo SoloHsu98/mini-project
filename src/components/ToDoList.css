@@ -1,4 +1,9 @@
 .btn-icon {
     border: none;
-    margin: 3px;
+    padding-left: 7px;
+}
+
+.items {
+    display: list-item;
+    margin-left: 1.3em;
 }
