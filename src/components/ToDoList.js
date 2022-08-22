@@ -36,7 +36,7 @@ const ToDoList = () => {
     return ( <> 
         <form className='form'>
         <div>
-       <label htnlFor="task">Task:</label>
+       <label htnlFor="task"><h3>Task:</h3></label>
        <input 
        type="text"
         id="task" 
@@ -49,15 +49,19 @@ const ToDoList = () => {
        </div>
        </form>
        
-       {todo.map((content , index) =>{
+       {todo && todo.length ? "" : "Nothing to do : /)"}
+       
+       
+       {todo && todo.map((content , index) =>{
         const { id, subject } = content;
         return (
-            <div className='items' style={{display: setTodo([]) ? 'block' : 'none' }} key={id}> Nothing to do :)
+            <div className='items' key={id}>
                 <li>{subject}<button className="btn-icon" onClick={()=>setTodo(todo.filter((element)=> element.id !== id))}><BsXLg /></button></li>
             </div>
         )
        }
        ) }
+
         </>
     )
 }
