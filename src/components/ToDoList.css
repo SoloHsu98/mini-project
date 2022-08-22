@@ -1,9 +1,21 @@
-.btn-icon {
-    border: none;
-    padding-left: 7px;
+/* ============= */
+.inputContainer {
+  display: flex;
+  justify-content: center;
 }
 
-.items {
-    display: list-item;
-    margin-left: 1.3em;
+.inputLabel {
+  margin-right: 5px;
+}
+
+.todoList {
+  text-align: left;
+  display: inline-block;
+}
+
+.listItemContent {
+  list-style-type: square;
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
