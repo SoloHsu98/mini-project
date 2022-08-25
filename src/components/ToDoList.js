@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import React, { useState } from "react";
 import "./ToDoList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,41 +37,42 @@ const ToDoList = () => {
 			<div css={styles.inputContainer}>
 				<label htmlFor="taskInput" css={styles.inputLabel}>
 					Task:
-				</label>
+				</label>{" "}
 				<input
 					name="taskInput"
 					className="inputField"
 					value={text}
 					onChange={handleChange}
 					onKeyDown={handleKeyDown}
-				/>
+				/>{" "}
 				<button
 					className="addButton"
 					disabled={text.trim() === ""}
 					onClick={addToList}>
-					Add
-				</button>
-			</div>
+					Add{" "}
+				</button>{" "}
+			</div>{" "}
 			{todo.length > 0 ? (
 				<div className="listContainer">
 					<ul css={styles.todoList}>
+						{" "}
 						{todo.map((item) => (
 							<li className="listItem" key={item.id}>
 								<div css={styles.listItemContent}>
-									<span>{item.subject}</span>
+									<span> {item.subject} </span>{" "}
 									<FontAwesomeIcon
 										icon={faTimes}
 										size={"lg"}
 										onClick={() => handleDelete(item.id)}
-									/>
-								</div>
+									/>{" "}
+								</div>{" "}
 							</li>
-						))}
-					</ul>
+						))}{" "}
+					</ul>{" "}
 				</div>
 			) : (
-				<p>There is nothing to do. {":)"}</p>
-			)}
+				<p> There is nothing to do . {":)"} </p>
+			)}{" "}
 		</>
 	);
 };
